@@ -22,5 +22,4 @@ int main(){
     list.deleteNode(2);
     list.printFarward();
 
-
 }
