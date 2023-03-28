@@ -1,9 +1,13 @@
 #include <iostream>
-#include "ArrayStack.cpp"
+#include "LinkedlistStack.cpp"
 using namespace std;
 int main(){
-    Stack list(5);
+    Stack list;
     
+    list.push(5);
+    list.push(5);
+    list.push(5);
+    list.printStack();
     list.pop();
     list.printStack();
 }
