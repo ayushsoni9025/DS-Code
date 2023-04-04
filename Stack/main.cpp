@@ -3,5 +3,9 @@
 
 using namespace std;
 int main(){
-    InfixToPrefix infix("ayush");
+    InfixToPrefix infix;
+    string p =infix.infixToPrefix("a+b*c/d");
+    cout<<p<<endl;
+
+
 }

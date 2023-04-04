@@ -61,12 +61,12 @@ void Stack :: printStack(){
 class InfixToPrefix : public Stack{
     public:
     string infix;
-    InfixToPrefix(string infix){
-        this->infix = infix;
-    }
+    string infixToPrefix(string s);
+    // InfixToPrefix(string infix){
+    //     this->infix = infix;
+    // }
     int precidence(char c);
     string reverse(string s);
-    string infixToPrefix(string s);
 };
 
 int InfixToPrefix :: precidence(char c){
@@ -102,17 +102,35 @@ string InfixToPrefix :: infixToPrefix(string s){
 
     for (int i = 0; i < s.length(); i++)
     {
-        if(s[i] == '('){
+        if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')){
+            result += s[i];
+        }
+        else if(s[i] == ')'){
             push(s[i]);
         }
-        else if(s[i]==')'){
+        else if(s[i]=='('){
             while (head != NULL && head->data!=')')
             {
                 result += head->data;
-                 
+                pop();
+            }
+            if(head != NULL){
+                pop();
             }
             
         }
+        else{
+            while(head != NULL && precidence(head->data) >= precidence(s[i])){
+                result += head->data;
+                pop();
+            }
+            push(s[i]);
+        }
     }
+
+    result += head->data;
+    pop();
     
+    result = reverse(result);
+    return result;
 }
