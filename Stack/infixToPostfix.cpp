@@ -55,18 +55,14 @@ void Stack :: printStack(){
 }
 
 
-class InfixToPrefix : public Stack{
+class InfixToPostfix : public Stack{
     public:
     string infix;
-    string infixToPrefix(string s);
-    // InfixToPrefix(string infix){
-    //     this->infix = infix;
-    // }
+    string infixToPostfix(string s);
     int precidence(char c);
-    string reverse(string s);
 };
 
-int InfixToPrefix :: precidence(char c){
+int InfixToPostfix :: precidence(char c){
     switch (c)
     {
     case '^':
@@ -82,19 +78,7 @@ int InfixToPrefix :: precidence(char c){
     }
 }
 
-string InfixToPrefix :: reverse(string s){
-    char c;
-    for (int i = 0; i < s.length()/2; i++)
-    {
-        c=s[i];
-        s[i]=s[s.length()-i-1];
-        s[s.length()-i-1]=c; 
-    }
-    return s; 
-}
-
-string InfixToPrefix :: infixToPrefix(string s){
-    s = reverse(s);
+string InfixToPostfix :: infixToPostfix(string s){
     string result;
 
     for (int i = 0; i < s.length(); i++)
@@ -102,11 +86,11 @@ string InfixToPrefix :: infixToPrefix(string s){
         if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')){
             result += s[i];
         }
-        else if(s[i] == ')'){
+        else if(s[i] == '('){
             push(s[i]);
         }
-        else if(s[i]=='('){
-            while (head != NULL && head->data!=')')
+        else if(s[i]==')'){
+            while (head != NULL && head->data!='(')
             {
                 result += head->data;
                 pop();
@@ -125,9 +109,11 @@ string InfixToPrefix :: infixToPrefix(string s){
         }
     }
 
+    
     result += head->data;
     pop();
-    
-    result = reverse(result);
+    result += head->data;
+    pop();
+
     return result;
 }
