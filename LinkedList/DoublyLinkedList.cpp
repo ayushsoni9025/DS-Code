@@ -19,23 +19,24 @@ public:
         pre = NULL;
     }
 };
+Node *head = NULL;
+Node *last = NULL;
+// class DoublyLinkedList{
+//     public:
+//     Node *head = NULL;
+//     Node *last = NULL;
+//     void insertAtFirst(int data);
+//     void insertAtEnd(int data);
+//     void insertAtIndex(int index,int data);
 
-class DoublyLinkedList{
-    public:
-    Node *head = NULL;
-    Node *last = NULL;
-    void insertAtFirst(int data);
-    void insertAtEnd(int data);
-    void insertAtIndex(int index,int data);
+//     void deleteFirst();
+//     void deleteLast();
+//     void deleteNode(int index);
+//     void printFarward();
+//     void printReverse();
+// };
 
-    void deleteFirst();
-    void deleteLast();
-    void deleteNode(int index);
-    void printFarward();
-    void printReverse();
-};
-
-void DoublyLinkedList :: insertAtFirst(int data){
+void  insertAtFirst(int data){
     Node * newNode = new Node(data);
     if(head == NULL){
         head = newNode;
@@ -48,7 +49,7 @@ void DoublyLinkedList :: insertAtFirst(int data){
     head = newNode;
 }
 
-void DoublyLinkedList :: insertAtEnd(int data){
+void  insertAtEnd(int data){
 
     Node * newNode = new Node(data);
     if(head == NULL){
@@ -61,7 +62,7 @@ void DoublyLinkedList :: insertAtEnd(int data){
     last = newNode;
 }
 
-void DoublyLinkedList ::insertAtIndex(int index, int data)
+void insertAtIndex(int index, int data)
 {
     if (head == NULL)
     {
@@ -80,7 +81,7 @@ void DoublyLinkedList ::insertAtIndex(int index, int data)
     p->next = p1;
 }
 
-void DoublyLinkedList ::deleteFirst(){
+void deleteFirst(){
     if (head == NULL)
     {
         cout << "Empty List Deletion" << endl;
@@ -93,7 +94,7 @@ void DoublyLinkedList ::deleteFirst(){
     p = NULL;
 }
 
-void DoublyLinkedList ::deleteLast()
+void deleteLast()
 {
     if (head == NULL)
     {
@@ -107,7 +108,7 @@ void DoublyLinkedList ::deleteLast()
     p = NULL;
 }
 
-void DoublyLinkedList ::deleteNode(int index)
+void deleteNode(int index)
 {
     if (head == NULL)
     {
@@ -134,7 +135,7 @@ void DoublyLinkedList ::deleteNode(int index)
     p = NULL;
 }
 
-void DoublyLinkedList :: printFarward(){
+void  printFarward(){
     if(head == NULL){
         cout<<"Empty list"<<endl;
         return;
@@ -146,7 +147,7 @@ void DoublyLinkedList :: printFarward(){
     }
 }
 
-void DoublyLinkedList :: printReverse(){
+void  printReverse(){
     if(head == NULL){
         cout<<"Empty list"<<endl;
         return;
@@ -156,4 +157,24 @@ void DoublyLinkedList :: printReverse(){
         cout<<p->data<<endl;
         p = p->pre;
     }
+}
+int main(){
+    insertAtFirst(52);
+    insertAtFirst(53);
+    insertAtFirst(54);
+    insertAtFirst(55);
+    insertAtFirst(56);
+    printReverse();
+    cout<<"next"<<endl;
+
+    insertAtEnd(58);
+    insertAtEnd(54);
+    insertAtEnd(50);
+
+    deleteLast();
+
+    printFarward();
+    cout<<"aksdjasfks"<<endl;
+    deleteNode(2);
+    printFarward();
 }

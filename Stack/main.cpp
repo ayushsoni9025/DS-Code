@@ -1,9 +1,9 @@
 #include <iostream>
-#include "infixToPostfix.cpp"
+#include "infixToPrefix.cpp"
 
 using namespace std;
 int main(){
-    InfixToPostfix infix;
-    string p =infix.infixToPostfix("a+b*(c/d)");
+    InfixToPrefix infix;
+    string p =infix.infixToPrefix("a+b*(c/d)");
     cout<<p<<endl;
 }
